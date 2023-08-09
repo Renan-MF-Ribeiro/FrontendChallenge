@@ -1,0 +1,37 @@
+<div class="body">
+  <!-- Information about the team  -->
+  <div class="info">
+    <div class="flex flex-col">
+      <mat-label class="text-red">Team:</mat-label>
+      <input [(ngModel)]="team.name" class="px-3 py-1 rounded-xl" type="text" />
+    </div>
+    <div class="flex flex-col h-full justify-center">
+      <app-selected-characters
+        *ngFor="let character of team?.members"
+        [character]="character"
+        class="max-h-8 my-2"
+      ></app-selected-characters>
+    </div>
+  </div>
+
+  <!-- Selecting the members for the team-->
+  <div class="flex flex-col p-3 w-3/4">
+    <mat-label class="font-bold text-white text-xl m-5"
+      >SELECT THE CHARACTERS FOR THE TEAM</mat-label
+    >
+    <div class="w-full grid grid-cols-6 gap-4">
+      <app-characters
+        *ngFor="let character of characters"
+        [character]="character"
+        [selected]="team?.members || []"
+        (select)="setTeam($event)"
+      ></app-characters>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="buttons">
+      <button (click)="saveTeam()" class="bg-red">CONFIRM</button>
+      <button (click)="getRandom()" class="bg-yellow">RANDOM</button>
+    </div>
+  </div>
+</div>

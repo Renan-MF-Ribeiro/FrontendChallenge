@@ -1,0 +1,38 @@
+<div
+  class="tournament h-full grid grid-cols-4 justify-items-center items-center"
+>
+  <!-- First stage of the tournament -->
+  <app-first class="phase"></app-first>
+
+  <!-- Quarterfinals of the tournament -->
+  <app-quarterfinals class="phase"> </app-quarterfinals>
+
+  <!-- Final of the tournament -->
+  <app-finals class="phase"> </app-finals>
+
+  <!-- Champion the tournament -->
+  <div class="phase">
+    <div class="stage stage3">
+      <div class="teams w-full py-2">
+        <a
+          [routerLink]="['/battle']"
+          [queryParams]="{
+            team1: finalist1?.idPosition,
+            team2: finalist2?.idPosition,
+            final: true
+          }"
+          [ngClass]="{ disabled: !final }"
+        >
+          <div class="battle">
+            <div class="w-4/5 text-red">
+              <p>Select Champion!</p>
+            </div>
+            <div class="w-1/5 flex justify-center items-center">
+              <mat-icon svgIcon="play"></mat-icon>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

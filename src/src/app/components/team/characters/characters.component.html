@@ -1,0 +1,26 @@
+<!-- Thumb Character -->
+<div
+  class="cursor-pointer relative"
+  (mouseenter)="openProfile(true)"
+  (mouseleave)="openProfile(false)"
+  (click)="select.emit(character)"
+  [ngClass]="{ overlay: inSelected }"
+>
+  <img [src]="character.thumb" alt="Thumb Character" />
+</div>
+<!-- Character Information -->
+<div class="character" *ngIf="profile">
+  <div class="flex justify-center items-center w-1/4">
+    <img
+      class="h-full fixed left-0 ml-[-10%]"
+      [src]="character.full"
+      alt="Full Character"
+    />
+  </div>
+  <div class="describe">
+    <div class="content">
+      <p class="text-red text-[25px]">{{ character.name.defaultText }}</p>
+      <span class="font-serif">{{ character.description.defaultText }}</span>
+    </div>
+  </div>
+</div>
